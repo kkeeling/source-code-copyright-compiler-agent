@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Core Requirements: Source Code Copyright Compiler</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .requirement {
+            background-color: #f9f9f9;
+            border-left: 4px solid #3498db;
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+        .requirement h3 {
+            color: #3498db;
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Core Requirements: Source Code Copyright Compiler</h1>
+
+    <p>The following core requirements have been identified for the Source Code Copyright Compiler project. These requirements focus on the essential functionalities needed for a Minimum Viable Product (MVP) and are likely to impact the chosen architecture.</p>
+
+    <h2>Functional Requirements</h2>
+
+    <div class="requirement">
+        <h3>FR1: Command-Line Interface</h3>
+        <p>The tool must provide a command-line interface that accepts a project root folder path as input.</p>
+    </div>
+
+    <div class="requirement">
+        <h3>FR2: Project Structure Analysis</h3>
+        <p>The tool must analyze the input project folder using a breadth-first search algorithm and generate a complete folder structure representation.</p>
+    </div>
+
+    <div class="requirement">
+        <h3>FR3: File Filtering</h3>
+        <p>The tool must implement a file filtering mechanism to exclude documentation files (e.g., .html, .md, .txt, .pdf) from processing.</p>
+    </div>
+
+    <div class="requirement">
+        <h3>FR4: Source Code Extraction</h3>
+        <p>The tool must extract the first 200 lines of each non-filtered source code file within the project.</p>
+    </div>
+
+    <div class="requirement">
+        <h3>FR5: MS Word Document Generation</h3>
+        <p>The tool must create a properly formatted MS Word document containing the project structure and extracted source code, following the breadth-first order of file discovery.</p>
+    </div>
+
+    <div class="requirement">
+        <h3>FR6: Progress Tracking</h3>
+        <p>The tool must provide real-time progress updates, including a progress bar and estimated time to completion.</p>
+    </div>
+
+    <h2>Non-Functional Requirements</h2>
+
+    <div class="requirement">
+        <h3>NFR1: Performance</h3>
+        <p>The tool must process projects with up to 1000 files within 5 minutes on a standard desktop computer.</p>
+    </div>
+
+    <div class="requirement">
+        <h3>NFR2: Compatibility</h3>
+        <p>The tool must be compatible with Python 3.11+ and run on Windows, macOS, and Linux operating systems.</p>
+    </div>
+
+    <div class="requirement">
+        <h3>NFR3: Error Handling</h3>
+        <p>The tool must provide clear error messages for common issues such as invalid input paths, permission errors, or file access problems.</p>
+    </div>
+
+    <div class="requirement">
+        <h3>NFR4: Documentation</h3>
+        <p>The tool must include basic usage instructions, a README file for users and developers, and information about file filtering behavior.</p>
+    </div>
+
+    <h2>Constraints</h2>
+
+    <div class="requirement">
+        <h3>C1: Technology Stack</h3>
+        <p>The tool must be developed using Python as specified in the project requirements.</p>
+    </div>
+
+    <div class="requirement">
+        <h3>C2: Development Timeline</h3>
+        <p>The MVP must be completed within the specified 1-week timeframe.</p>
+    </div>
+
+    <div class="requirement">
+        <h3>C3: Third-Party Libraries</h3>
+        <p>The use of third-party libraries should be minimized to essential tools for MS Word document creation and file system operations.</p>
+    </div>
+</body>
+</html>

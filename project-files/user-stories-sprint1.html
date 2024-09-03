@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Stories: Source Code Copyright Compiler - Sprint 1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        .user-story {
+            background-color: #f9f9f9;
+            border-left: 4px solid #3498db;
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+        .task {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>User Stories: Source Code Copyright Compiler - Sprint 1</h1>
+
+    <div class="user-story">
+        <h2>US-01: Project Setup and CLI Interface</h2>
+        <p><strong>As a</strong> developer,<br>
+        <strong>I want to</strong> set up the project structure and implement a command-line interface,<br>
+        <strong>So that</strong> I can start building the core functionality of the Source Code Copyright Compiler.</p>
+        
+        <h3>Acceptance Criteria:</h3>
+        <ul>
+            <li>Project repository is initialized with the correct structure</li>
+            <li>CLI accepts a project root folder path as input</li>
+            <li>Basic error handling for invalid inputs is implemented</li>
+            <li>README file is created with initial setup instructions</li>
+        </ul>
+        
+        <h3>Tasks:</h3>
+        <div class="task">
+            <p>T-01-01: Initialize project repository (ID: 1001)</p>
+            <p>T-01-02: Set up virtual environment and install initial dependencies (ID: 1002)</p>
+            <p>T-01-03: Implement basic CLI structure using argparse (ID: 1003)</p>
+            <p>T-01-04: Add input validation for project root folder path (ID: 1004)</p>
+            <p>T-01-05: Create initial README.md with setup instructions (ID: 1005)</p>
+        </div>
+    </div>
+
+    <div class="user-story">
+        <h2>US-02: Project Analysis with Breadth-First Search</h2>
+        <p><strong>As a</strong> user,<br>
+        <strong>I want the tool to</strong> analyze my project structure using a breadth-first search,<br>
+        <strong>So that</strong> all files are processed in a predictable order based on their location in the project structure.</p>
+        
+        <h3>Acceptance Criteria:</h3>
+        <ul>
+            <li>Tool successfully traverses the project directory using breadth-first search</li>
+            <li>All files and directories are identified and logged</li>
+            <li>Project structure is accurately represented</li>
+            <li>The order of file processing matches the breadth-first traversal</li>
+        </ul>
+        
+        <h3>Tasks:</h3>
+        <div class="task">
+            <p>T-02-01: Implement breadth-first search algorithm for directory traversal (ID: 2001)</p>
+            <p>T-02-02: Create a data structure to represent the project hierarchy (ID: 2002)</p>
+            <p>T-02-03: Implement logging of file and directory discovery (ID: 2003)</p>
+            <p>T-02-04: Ensure the order of file processing matches the breadth-first traversal (ID: 2004)</p>
+        </div>
+    </div>
+
+    <div class="user-story">
+        <h2>US-03: File Filtering</h2>
+        <p><strong>As a</strong> user,<br>
+        <strong>I want the tool to</strong> ignore documentation files during processing,<br>
+        <strong>So that</strong> only relevant source code files are included in the copyright document.</p>
+        
+        <h3>Acceptance Criteria:</h3>
+        <ul>
+            <li>Files with extensions .html, .md, .txt, .pdf are excluded from processing</li>
+            <li>A configurable list of file extensions to ignore is implemented</li>
+            <li>The tool logs which files are being skipped due to filtering</li>
+            <li>The project structure representation includes filtered files but marks them as excluded</li>
+        </ul>
+        
+        <h3>Tasks:</h3>
+        <div class="task">
+            <p>T-03-01: Implement a File Filter component (ID: 3001)</p>
+            <p>T-03-02: Create a configurable list of file extensions to ignore (ID: 3002)</p>
+            <p>T-03-03: Integrate File Filter with Project Analyzer and Code Extractor (ID: 3003)</p>
+            <p>T-03-04: Implement logging for skipped files (ID: 3004)</p>
+        </div>
+    </div>
+
+    <div class="user-story">
+        <h2>US-04: Code Extraction and Document Generation</h2>
+        <p><strong>As a</strong> user,<br>
+        <strong>I want the tool to</strong> extract code snippets from non-filtered files and generate an MS Word document,<br>
+        <strong>So that</strong> I have a well-formatted document ready for copyright submission.</p>
+        
+        <h3>Acceptance Criteria:</h3>
+        <ul>
+            <li>First 200 lines of each non-filtered source code file are extracted</li>
+            <li>MS Word document is generated with correct formatting</li>
+            <li>Document includes project structure and code snippets in breadth-first order</li>
+            <li>Code snippets are properly formatted within the document</li>
+            <li>Filtered files are listed in the project structure but without code snippets</li>
+        </ul>
+        
+        <h3>Tasks:</h3>
+        <div class="task">
+            <p>T-04-01: Implement code extraction logic for non-filtered files (ID: 4001)</p>
+            <p>T-04-02: Set up python-docx for MS Word document generation (ID: 4002)</p>
+            <p>T-04-03: Create document structure with project overview, respecting breadth-first order (ID: 4003)</p>
+            <p>T-04-04: Implement code snippet insertion with proper formatting (ID: 4004)</p>
+            <p>T-04-05: Add representation of filtered files in the document structure (ID: 4005)</p>
+        </div>
+    </div>
+
+    <div class="user-story">
+        <h2>US-05: Progress Tracking and User Feedback</h2>
+        <p><strong>As a</strong> user,<br>
+        <strong>I want to</strong> see real-time progress updates,<br>
+        <strong>So that</strong> I know the status of the document generation and estimated completion time.</p>
+        
+        <h3>Acceptance Criteria:</h3>
+        <ul>
+            <li>Progress bar is displayed in the console</li>
+            <li>Current stage of the process is clearly indicated</li>
+            <li>Estimated time to completion is provided and updated in real-time</li>
+            <li>Final summary of the process is displayed upon completion, including number of files processed and skipped</li>
+        </ul>
+        
+        <h3>Tasks:</h3>
+        <div class="task">
+            <p>T-05-01: Integrate tqdm library for progress bar display (ID: 5001)</p>
+            <p>T-05-02: Implement progress tracking for each major stage (ID: 5002)</p>
+            <p>T-05-03: Add estimated time to completion calculation (ID: 5003)</p>
+            <p>T-05-04: Create final summary generation logic, including filtered file statistics (ID: 5004)</p>
+        </div>
+    </div>
+
+    <div class="user-story">
+        <h2>US-06: Error Handling and Logging</h2>
+        <p><strong>As a</strong> developer,<br>
+        <strong>I want to</strong> implement robust error handling and logging,<br>
+        <strong>So that</strong> users receive clear error messages and I can troubleshoot issues effectively.</p>
+        
+        <h3>Acceptance Criteria:</h3>
+        <ul>
+            <li>Centralized error handling mechanism is implemented</li>
+            <li>Clear, user-friendly error messages are displayed for common issues</li>
+            <li>Detailed logs are generated for troubleshooting, including information about filtered files</li>
+            <li>Graceful error recovery where possible</li>
+        </ul>
+        
+        <h3>Tasks:</h3>
+        <div class="task">
+            <p>T-06-01: Set up centralized error handling system (ID: 6001)</p>
+            <p>T-06-02: Implement logging mechanism using Python's logging module (ID: 6002)</p>
+            <p>T-06-03: Create user-friendly error messages for common scenarios (ID: 6003)</p>
+            <p>T-06-04: Add try-except blocks for graceful error recovery (ID: 6004)</p>
+            <p>T-06-05: Implement logging for file filtering decisions (ID: 6005)</p>
+        </div>
+    </div>
+
+    <div class="user-story">
+        <h2>US-07: Performance Optimization</h2>
+        <p><strong>As a</strong> user,<br>
+        <strong>I want the tool to</strong> process large projects efficiently,<br>
+        <strong>So that</strong> I can generate copyright documents for projects with up to 1000 files within 5 minutes.</p>
+        
+        <h3>Acceptance Criteria:</h3>
+        <ul>
+            <li>Tool processes up to 1000 files within 5 minutes on a standard desktop computer</li>
+            <li>Efficient file reading techniques are used</li>
+            <li>Breadth-first search algorithm is optimized for large directory structures</li>
+            <li>File filtering does not significantly impact overall performance</li>
+        </ul>
+        
+        <h3>Tasks:</h3>
+        <div class="task">
+            <p>T-07-01: Optimize breadth-first search implementation (ID: 7001)</p>
+            <p>T-07-02: Implement efficient file reading using appropriate techniques (ID: 7002)</p>
+            <p>T-07-03: Profile the application to identify performance bottlenecks (ID: 7003)</p>
+            <p>T-07-04: Optimize file filtering process (ID: 7004)</p>
+            <p>T-07-05: Conduct performance testing with large projects (ID: 7005)</p>
+        </div>
+    </div>
+
+    <h2>Developer Notes</h2>
+    <p>Remember to verify the compatibility of all required libraries to avoid dependency conflicts. Start coding by day 3 at the latest. The first developer ticket (US-01) is about setting up the initial project, including all dependencies.</p>
+</body>
+</html>

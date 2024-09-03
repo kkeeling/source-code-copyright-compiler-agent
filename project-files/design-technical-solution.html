@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design & Technical Solution: Source Code Copyright Compiler</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        .section {
+            background-color: #f9f9f9;
+            border-left: 4px solid #3498db;
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+        code {
+            background-color: #f0f0f0;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Design & Technical Solution: Source Code Copyright Compiler</h1>
+
+    <div class="section">
+        <h2>1. High-Level Architecture</h2>
+        <p>The Source Code Copyright Compiler will be implemented as a command-line tool using Python 3.11+. The application will follow a modular design with the following main components:</p>
+        <ul>
+            <li>CLI Interface</li>
+            <li>Project Analyzer</li>
+            <li>File and Folder Filter</li>
+            <li>Gemini LLM Integration</li>
+            <li>Code Processor</li>
+            <li>Document Generator</li>
+            <li>Sensitive Information Obfuscator</li>
+            <li>Progress Tracker</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>2. Technology Stack</h2>
+        <ul>
+            <li>Programming Language: Python 3.11+</li>
+            <li>Command-line Argument Parsing: argparse (built-in)</li>
+            <li>File System Operations: os, pathlib (built-in)</li>
+            <li>MS Word Document Generation: python-docx</li>
+            <li>Progress Reporting: tqdm</li>
+            <li>LLM Integration: Google AI Python SDK</li>
+            <li>HTTP Requests: requests library</li>
+            <li>Sensitive Information Detection: custom regex patterns</li>
+            <li>Configuration Management: configparser</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>3. Component Details</h2>
+        
+        <h3>3.1 CLI Interface</h3>
+        <p>Utilizes Python's <code>argparse</code> module to handle command-line arguments and provide a user-friendly interface. It will:</p>
+        <ul>
+            <li>Accept the project root folder path</li>
+            <li>Allow users to specify additional folders, extensions, and files to ignore</li>
+            <li>Provide options to view and modify the default ignore lists</li>
+            <li>Initiate the Progress Tracker</li>
+        </ul>
+        
+        <h3>3.2 Project Analyzer</h3>
+        <p>Traverses the project directory to collect all relevant source code files. It will:</p>
+        <ul>
+            <li>Identify all files in the project</li>
+            <li>Use the File and Folder Filter to exclude ignored items</li>
+            <li>Prepare the code content for submission to the Gemini LLM</li>
+        </ul>
+        
+        <h3>3.3 File and Folder Filter</h3>
+        <p>Manages the filtering of files and folders based on default and user-defined ignore patterns. It will:</p>
+        <ul>
+            <li>Maintain default lists of folders and file extensions to ignore</li>
+            <li>Incorporate user-defined ignore patterns</li>
+            <li>Provide methods to check if a file or folder should be ignored</li>
+            <li>Allow runtime updates to ignore patterns</li>
+        </ul>
+        
+        <h3>3.4 Gemini LLM Integration</h3>
+        <p>Integrates with Google's Gemini 1.5 Flash LLM to process and prioritize source code. It will:</p>
+        <ul>
+            <li>Prepare API requests with collected source code</li>
+            <li>Send requests to the Gemini API</li>
+            <li>Process the LLM's response to extract prioritized file contents</li>
+        </ul>
+        
+        <h3>3.5 Code Processor</h3>
+        <p>Processes the prioritized code returned by the Gemini LLM. It will:</p>
+        <ul>
+            <li>Extract the first 10 "pages" and last 10 "pages" of code for each file</li>
+            <li>Identify and mark sections for sensitive information obfuscation</li>
+        </ul>
+        
+        <h3>3.6 Document Generator</h3>
+        <p>Creates an MS Word document with the processed code. It will:</p>
+        <ul>
+            <li>Generate a document structure based on the LLM's prioritization</li>
+            <li>Insert code snippets with proper formatting and file name headers</li>
+            <li>Ensure only the specified "pages" of code are included</li>
+        </ul>
+
+        <h3>3.7 Sensitive Information Obfuscator</h3>
+        <p>Detects and obfuscates sensitive information in the code. It will:</p>
+        <ul>
+            <li>Use regex patterns to identify potential secrets, keys, and sensitive data</li>
+            <li>Replace identified information with placeholder text</li>
+            <li>Log obfuscated items for review</li>
+        </ul>
+
+        <h3>3.8 Progress Tracker</h3>
+        <p>Manages and displays progress information to the user using the <code>tqdm</code> library.</p>
+    </div>
+
+    <div class="section">
+        <h2>4. File and Folder Filtering Implementation</h2>
+        <p>To implement the file and folder filtering functionality:</p>
+        <ul>
+            <li>Create a configuration file (e.g., <code>ignore_config.ini</code>) to store default ignore patterns</li>
+            <li>Implement a <code>FilterManager</code> class to handle ignore patterns and filtering logic</li>
+            <li>Use <code>pathlib</code> for efficient path matching and filtering</li>
+        </ul>
+        <p>Example implementation:</p>
+        <pre><code>
+import configparser
+from pathlib import Path
+
+class FilterManager:
+    def __init__(self, config_file='ignore_config.ini'):
+        self.config = configparser.ConfigParser()
+        self.config.read(config_file)
+        self.load_default_patterns()
+        self.user_defined_patterns = set()
+
+    def load_default_patterns(self):
+        self.default_folders = set(self.config['DEFAULT']['ignore_folders'].split(','))
+        self.default_extensions = set(self.config['DEFAULT']['ignore_extensions'].split(','))
+
+    def add_user_pattern(self, pattern):
+        self.user_defined_patterns.add(pattern)
+
+    def should_ignore(self, path):
+        path = Path(path)
+        
+        # Check if any parent folder should be ignored
+        for parent in path.parents:
+            if parent.name in self.default_folders or str(parent) in self.user_defined_patterns:
+                return True
+        
+        # Check file extension
+        if path.suffix in self.default_extensions:
+            return True
+        
+        # Check user-defined patterns
+        if str(path) in self.user_defined_patterns:
+            return True
+        
+        return False
+
+# Usage in Project Analyzer
+filter_manager = FilterManager()
+filter_manager.add_user_pattern('specific_file_to_ignore.txt')
+
+for file_path in project_files:
+    if not filter_manager.should_ignore(file_path):
+        # Process the file
+        pass
+        </code></pre>
+    </div>
+
+    <div class="section">
+        <h2>5. CLI Interface Updates</h2>
+        <p>Update the CLI to accept ignore patterns:</p>
+        <pre><code>
+import argparse
+
+parser = argparse.ArgumentParser(description='Source Code Copyright Compiler')
+parser.add_argument('project_path', help='Path to the project root folder')
+parser.add_argument('--ignore-folder', action='append', help='Additional folder to ignore')
+parser.add_argument('--ignore-extension', action='append', help='Additional file extension to ignore')
+parser.add_argument('--ignore-file', action='append', help='Specific file to ignore')
+
+args = parser.parse_args()
+
+# Initialize FilterManager with user-defined patterns
+filter_manager = FilterManager()
+if args.ignore_folder:
+    for folder in args.ignore_folder:
+        filter_manager.add_user_pattern(folder)
+if args.ignore_extension:
+    for ext in args.ignore_extension:
+        filter_manager.add_user_pattern(f'*.{ext}')
+if args.ignore_file:
+    for file in args.ignore_file:
+        filter_manager.add_user_pattern(file)
+        </code></pre>
+    </div>
+
+    <div class="section">
+        <h2>6. Data Flow</h2>
+        <ol>
+            <li>User provides project root folder path and optional ignore patterns via CLI</li>
+            <li>FilterManager is initialized with default and user-defined ignore patterns</li>
+            <li>Project Analyzer collects all source code files, applying the ignore filters</li>
+            <li>Gemini LLM Integration sends filtered code to the API and receives prioritized results</li>
+            <li>Code Processor extracts relevant portions of prioritized code</li>
+            <li>Sensitive Information Obfuscator scans and obfuscates sensitive data</li>
+            <li>Document Generator creates the MS Word document with processed code</li>
+            <li>Progress Tracker updates the user throughout the process</li>
+            <li>Final document is saved to the specified location</li>
+        </ol>
+    </div>
+
+    <!-- ... (rest of the document remains largely unchanged) ... -->
+
+</body>
+</html>

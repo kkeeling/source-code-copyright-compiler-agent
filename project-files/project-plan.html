@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Plan: Source Code Copyright Compiler</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        .sprint {
+            background-color: #f9f9f9;
+            border-left: 4px solid #3498db;
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+        .task {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Project Plan: Source Code Copyright Compiler</h1>
+
+    <h2>Project Overview</h2>
+    <p>The Source Code Copyright Compiler is a command-line tool that takes a project root folder as input and creates an MS Word document containing the source code for the input project (first 200 lines per file) for copyright submission purposes. The project will be completed in 1 week, with the team working 5 days per week.</p>
+
+    <h2>Team Composition</h2>
+    <ul>
+        <li>1 Product Manager</li>
+        <li>1 Developer</li>
+        <li>1 Tester</li>
+    </ul>
+
+    <h2>Sprint Plan</h2>
+
+    <div class="sprint">
+        <h3>Sprint 1 (Days 1-5)</h3>
+
+        <h4>Day 1: Project Setup and Initial Development</h4>
+        <div class="task">
+            <p><strong>Developer Tasks:</strong></p>
+            <ul>
+                <li>Set up the development environment</li>
+                <li>Initialize the project structure</li>
+                <li>Implement the CLI Interface</li>
+                <li>Begin implementation of the Project Analyzer with breadth-first search</li>
+            </ul>
+            <p><strong>Tester Tasks:</strong></p>
+            <ul>
+                <li>Set up the testing environment</li>
+                <li>Create test plans for the CLI Interface and Project Analyzer</li>
+            </ul>
+            <p><strong>Product Manager Tasks:</strong></p>
+            <ul>
+                <li>Refine project requirements</li>
+                <li>Create detailed user stories for the first sprint</li>
+            </ul>
+        </div>
+
+        <h4>Day 2: Core Functionality Development</h4>
+        <div class="task">
+            <p><strong>Developer Tasks:</strong></p>
+            <ul>
+                <li>Complete the Project Analyzer with breadth-first search</li>
+                <li>Implement the File Filter component</li>
+                <li>Begin implementation of the Code Extractor</li>
+            </ul>
+            <p><strong>Tester Tasks:</strong></p>
+            <ul>
+                <li>Begin testing the Project Analyzer</li>
+                <li>Create test cases for the File Filter</li>
+            </ul>
+            <p><strong>Product Manager Tasks:</strong></p>
+            <ul>
+                <li>Review progress and adjust priorities if needed</li>
+                <li>Coordinate with the team on file filtering requirements</li>
+            </ul>
+        </div>
+
+        <h4>Day 3: Advanced Functionality Development</h4>
+        <div class="task">
+            <p><strong>Developer Tasks:</strong></p>
+            <ul>
+                <li>Complete the Code Extractor</li>
+                <li>Implement the Document Generator</li>
+                <li>Begin implementation of the Progress Tracker</li>
+            </ul>
+            <p><strong>Tester Tasks:</strong></p>
+            <ul>
+                <li>Test the File Filter and Code Extractor</li>
+                <li>Begin testing the Document Generator</li>
+                <li>Create test cases for the Progress Tracker</li>
+            </ul>
+            <p><strong>Product Manager Tasks:</strong></p>
+            <ul>
+                <li>Review the initial output of the Document Generator</li>
+                <li>Gather feedback on the file filtering effectiveness</li>
+            </ul>
+        </div>
+
+        <h4>Day 4: Integration and Refinement</h4>
+        <div class="task">
+            <p><strong>Developer Tasks:</strong></p>
+            <ul>
+                <li>Complete the Progress Tracker</li>
+                <li>Integrate all components</li>
+                <li>Implement error handling and logging</li>
+                <li>Begin performance optimizations</li>
+            </ul>
+            <p><strong>Tester Tasks:</strong></p>
+            <ul>
+                <li>Conduct integration testing</li>
+                <li>Test error handling and edge cases</li>
+                <li>Begin performance testing</li>
+            </ul>
+            <p><strong>Product Manager Tasks:</strong></p>
+            <ul>
+                <li>Review the integrated solution</li>
+                <li>Collect and prioritize any final adjustments</li>
+            </ul>
+        </div>
+
+        <h4>Day 5: Finalization and Documentation</h4>
+        <div class="task">
+            <p><strong>Developer Tasks:</strong></p>
+            <ul>
+                <li>Address any remaining bugs or issues</li>
+                <li>Finalize performance optimizations</li>
+                <li>Complete inline code documentation</li>
+                <li>Create the README.md file, including file filtering details</li>
+            </ul>
+            <p><strong>Tester Tasks:</strong></p>
+            <ul>
+                <li>Conduct final round of testing</li>
+                <li>Verify all identified issues have been resolved</li>
+                <li>Test the tool with various project sizes and structures</li>
+            </ul>
+            <p><strong>Product Manager Tasks:</strong></p>
+            <ul>
+                <li>Review and approve the final product</li>
+                <li>Prepare for project handoff</li>
+                <li>Document any future enhancement ideas</li>
+            </ul>
+        </div>
+    </div>
+
+    <h2>Deliverables</h2>
+    <ul>
+        <li>Source Code Copyright Compiler command-line tool</li>
+        <li>README.md with installation, usage instructions, and file filtering information</li>
+        <li>Test suite and test results documentation</li>
+        <li>Project documentation including setup guide</li>
+    </ul>
+
+    <h2>Risks and Mitigations</h2>
+    <ul>
+        <li><strong>Risk:</strong> Performance issues with large projects
+            <br><strong>Mitigation:</strong> Implement efficient file reading and optimize breadth-first search. Continuously test with large datasets throughout development.</li>
+        <li><strong>Risk:</strong> Incorrect file filtering
+            <br><strong>Mitigation:</strong> Thoroughly test the File Filter component with various project structures and file types. Implement logging for filtering decisions.</li>
+        <li><strong>Risk:</strong> Compatibility issues across different operating systems
+            <br><strong>Mitigation:</strong> Use Python's built-in libraries for file system operations when possible. Test on multiple platforms throughout development.</li>
+    </ul>
+
+    <h2>Success Criteria</h2>
+    <ul>
+        <li>The tool successfully processes projects with up to 1000 files within 5 minutes</li>
+        <li>Generated MS Word document correctly represents the project structure and code snippets in breadth-first order</li>
+        <li>File filtering correctly excludes documentation files from processing</li>
+        <li>The tool runs on Windows, macOS, and Linux operating systems</li>
+        <li>Clear and informative progress updates are provided to the user during execution</li>
+    </ul>
+</body>
+</html>

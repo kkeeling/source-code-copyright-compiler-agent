@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Stories: Source Code Copyright Compiler - Sprint 2</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        .user-story {
+            background-color: #f9f9f9;
+            border-left: 4px solid #3498db;
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+        .task {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>User Stories: Source Code Copyright Compiler - Sprint 2</h1>
+
+    <div class="user-story">
+        <h2>US-05: File and Folder Filtering</h2>
+        <p><strong>As a</strong> user,<br>
+        <strong>I want to</strong> be able to specify folders, file extensions, and specific files to ignore,<br>
+        <strong>So that</strong> I can exclude irrelevant or sensitive parts of my project from the copyright document.</p>
+        
+        <h3>Acceptance Criteria:</h3>
+        <ul>
+            <li>Default ignore lists for common folders and file extensions are implemented</li>
+            <li>Users can add custom folders, extensions, and files to ignore via command-line arguments</li>
+            <li>The tool correctly filters out specified items during project analysis</li>
+            <li>Ignored items are logged for user reference</li>
+        </ul>
+        
+        <h3>Tasks:</h3>
+        <div class="task">
+            <p>T-05-01: Implement FilterManager class with default ignore patterns (ID: 5001)</p>
+            <p>T-05-02: Update CLI to accept custom ignore patterns (ID: 5002)</p>
+            <p>T-05-03: Integrate FilterManager with Project Analyzer (ID: 5003)</p>
+            <p>T-05-04: Implement logging for ignored items (ID: 5004)</p>
+            <p>T-05-05: Write unit tests for FilterManager (ID: 5005)</p>
+        </div>
+    </div>
+
+    <div class="user-story">
+        <h2>US-06: Gemini LLM Integration for Code Prioritization</h2>
+        <p><strong>As a</strong> user,<br>
+        <strong>I want the tool to</strong> use Google's Gemini 1.5 Flash LLM to prioritize my project's code,<br>
+        <strong>So that</strong> the most important parts of my codebase are highlighted in the copyright document.</p>
+        
+        <h3>Acceptance Criteria:</h3>
+        <ul>
+            <li>The tool successfully integrates with the Gemini 1.5 Flash LLM API</li>
+            <li>Project code is sent to the LLM for analysis and prioritization</li>
+            <li>The LLM's response is correctly parsed to extract prioritized file contents</li>
+            <li>Files are ordered in the final document according to the LLM's prioritization</li>
+        </ul>
+        
+        <h3>Tasks:</h3>
+        <div class="task">
+            <p>T-06-01: Set up Gemini LLM API integration using Google AI Python SDK (ID: 6001)</p>
+            <p>T-06-02: Implement code preparation and submission to LLM (ID: 6002)</p>
+            <p>T-06-03: Develop parsing logic for LLM responses (ID: 6003)</p>
+            <p>T-06-04: Integrate LLM prioritization with document generation process (ID: 6004)</p>
+            <p>T-06-05: Implement error handling and retries for API calls (ID: 6005)</p>
+        </div>
+    </div>
+
+    <div class="user-story">
+        <h2>US-07: Sensitive Information Obfuscation</h2>
+        <p><strong>As a</strong> user,<br>
+        <strong>I want the tool to</strong> automatically obfuscate sensitive information in my code,<br>
+        <strong>So that</strong> I can safely submit my copyright document without exposing secrets or keys.</p>
+        
+        <h3>Acceptance Criteria:</h3>
+        <ul>
+            <li>The tool detects common patterns of sensitive information (e.g., API keys, passwords)</li>
+            <li>Detected sensitive information is replaced with placeholder text</li>
+            <li>Obfuscation occurs before code is included in the final document</li>
+            <li>A log of obfuscated items is generated for review</li>
+        </ul>
+        
+        <h3>Tasks:</h3>
+        <div class="task">
+            <p>T-07-01: Implement regex patterns for detecting sensitive information (ID: 7001)</p>
+            <p>T-07-02: Develop obfuscation logic to replace sensitive data (ID: 7002)</p>
+            <p>T-07-03: Integrate obfuscation process with code processing pipeline (ID: 7003)</p>
+            <p>T-07-04: Implement logging system for obfuscated items (ID: 7004)</p>
+            <p>T-07-05: Create unit tests for obfuscation functionality (ID: 7005)</p>
+        </div>
+    </div>
+
+    <div class="user-story">
+        <h2>US-08: Enhanced Document Generation</h2>
+        <p><strong>As a</strong> user,<br>
+        <strong>I want the tool to</strong> generate a document with only the first and last 10 "pages" of each important file,<br>
+        <strong>So that</strong> I have a concise yet comprehensive representation of my project for copyright purposes.</p>
+        
+        <h3>Acceptance Criteria:</h3>
+        <ul>
+            <li>The document includes only the first and last 10 "pages" of code for each file</li>
+            <li>Files are presented in order of importance as determined by the LLM</li>
+            <li>Each file section includes a clear header with the file name</li>
+            <li>The document maintains proper formatting and readability</li>
+        </ul>
+        
+        <h3>Tasks:</h3>
+        <div class="task">
+            <p>T-08-01: Modify Code Processor to extract first and last 10 "pages" of code (ID: 8001)</p>
+            <p>T-08-02: Update Document Generator to create structured content based on LLM prioritization (ID: 8002)</p>
+            <p>T-08-03: Implement file name header generation for each code section (ID: 8003)</p>
+            <p>T-08-04: Ensure proper formatting and styling of the MS Word document (ID: 8004)</p>
+            <p>T-08-05: Develop unit tests for document generation process (ID: 8005)</p>
+        </div>
+    </div>
+
+    <div class="user-story">
+        <h2>US-09: Performance Optimization and Error Handling</h2>
+        <p><strong>As a</strong> developer,<br>
+        <strong>I want to</strong> ensure the tool performs efficiently and handles errors gracefully,<br>
+        <strong>So that</strong> users have a smooth experience even with large projects or API issues.</p>
+        
+        <h3>Acceptance Criteria:</h3>
+        <ul>
+            <li>The tool processes large projects (up to 1000 files) within a reasonable time frame</li>
+            <li>Proper error handling is implemented for file operations, API calls, and document generation</li>
+            <li>Users receive clear and helpful error messages</li>
+            <li>The tool can recover from minor errors and continue processing</li>
+        </ul>
+        
+        <h3>Tasks:</h3>
+        <div class="task">
+            <p>T-09-01: Implement asynchronous processing for API calls and file operations (ID: 9001)</p>
+            <p>T-09-02: Optimize file reading and writing operations (ID: 9002)</p>
+            <p>T-09-03: Develop comprehensive error handling strategy (ID: 9003)</p>
+            <p>T-09-04: Implement user-friendly error messages and logging (ID: 9004)</p>
+            <p>T-09-05: Conduct performance testing with large sample projects (ID: 9005)</p>
+        </div>
+    </div>
+
+    <h2>Developer Notes</h2>
+    <p>Sprint 2 focuses on implementing the core functionality changes, including LLM integration, sensitive data obfuscation, and enhanced document generation. Ensure all components work together seamlessly and that the user experience remains intuitive despite the added complexity.</p>
+</body>
+</html>
