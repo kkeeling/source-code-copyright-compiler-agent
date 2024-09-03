@@ -64,11 +64,6 @@ python src/main.py /path/to/your/project --ignore-folder node_modules --ignore-f
 
 **Note:** Be careful with typos in the command-line options. For example, `--ignore-extenstion` (missing 'i') is a common typo. The tool will try to suggest corrections for misspelled arguments.
 
-Corrected example for the command provided earlier:
-```
-python src/main.py ~/Documents/_projects/Volato --ignore-folder android ios buildconfig .husky .expo .vscode .aider.tags.cache.v3 icons --ignore-extension png jpg jpeg svg otf yml history log orig env local DS_Store lock gitignore python-version eslintignore config.js json --output VolatoMobile.docx
-```
-
 The tool will analyze the project structure, extract code snippets, and generate an MS Word document in the specified location or the current directory.
 
 ## Output
